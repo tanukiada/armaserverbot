@@ -18,7 +18,7 @@ async def hello(ctx):
 
 @bot.slash_command(description = "start arma 3 server")
 async def start(ctx):
-    r = requests.post('127.0.0.1/arma3/start')
+    r = requests.post('127.0.0.1:8080/arma3/start')
     await ctx.respond(r.json())
 
 bot.run(os.getenv('TOKEN'))
