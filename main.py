@@ -12,12 +12,12 @@ bot = discord.Bot()
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx:discord.ApplicationContext):
+@bot.slash_command( description = "Say hello to the bot")
+async def hello(ctx):
     await ctx.respond("Hey!")
 
-@bot.slash_command(name = "start", description = "start arma 3 server")
-async def start(ctx:discord.ApplicationContext):
+@bot.slash_command(description = "start arma 3 server")
+async def start(ctx):
     r = requests.post('127.0.0.1/arma3/start')
     await ctx.respond(r.json())
 
