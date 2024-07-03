@@ -1,6 +1,7 @@
 import dotenv
 import discord
 import os
+import requests
 
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
@@ -14,5 +15,10 @@ async def on_ready():
 @bot.slash_command(name = "hello", description = "Say hello to the bot")
 async def hello(ctx:discord.ApplicationContext):
     await ctx.respond("Hey!")
+
+@bot.slash_command(name = "start", description = "start arma 3 server")
+async def start(ctx:discord.ApplicationContext):
+    r = requests.post('locallhost/arma3/start')
+    await ctx.respond(r.json())
 
 bot.run(os.getenv('TOKEN'))
